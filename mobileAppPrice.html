@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src='https://code.angularjs.org/1.1.2/angular.min.js'></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet" href="mobileAppPrice.css">
+
+</head>
+            
+        <body ng-app="myApp" ng-controller="Main">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <img src="./images/logo2.png" alt="logologo2" height="70px" width="70px">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="webdev.html">Web Development</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mobileAppPrice.html">Mobile Development</a>
+                    </li>
+                    <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    
+    
+          <div class="section">
+            <div class="container">
+        
+              <div class="row" id="myRow">
+                <div class="col-md-12 lighter">
+                  <div class="page-header text-primary">
+                    <h1>
+                      Mobile Application Price Calculator
+                    </h1>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-3">
+                  <h2 class="text-primary text-right">Available Devices</h2>
+                </div>
+                <div class="col-md-3 text-center">
+                  <div class="col-md-6 text-center">
+                    <i class="-o -square fa fa-5x fa-apple fa-fw text-primary"></i>
+                    <br>iPhone</a>
+                  </div>
+                  <div class="col-md-6 text-center">
+                    <i class="-o -square fa fa-5x fa-android fa-fw text-primary"></i>
+                    <br>Android
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <p>Miles Technologies offers mobile a wide variety of mobile applications features
+                    <br>that can function on both Apple and Android devices. If you would like an application
+                    <br>to operate on both operating systems, the total cost of your mobile app will increase
+                    <br>by a factor of (???) to account for this process.</p>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-12">
+                  <h2 class="text-left text-primary">Select Application Features:</h2>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-9">
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" data-toggle="button" ng-click="addFeat(0)">
+                      <i class="fa fa-fw fa-3x 
+                       fa-4x fa-fw -o -square fa-envelope"></i>
+                      <br>Email Login
+                    </a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(1)" data-toggle="button"><i class="fa fa-4x fa-facebook-square fa-fw"></i><br>Social Login</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(2)" data-toggle="button"><i class="fa fa-4x fa-fw fa-navicon"></i><br>Navigation</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(3)" data-toggle="button"><i class="fa fa-4x fa-fw fa-dashboard"></i><br>Dashboard</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(4)" data-toggle="button"><i class="fa fa-4x fa-fw fa-search"></i><br>Analytics (min)</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(5)" data-toggle="button"><i class="fa fa-4x fa-fw fa-search-plus"></i><br>Analytics (max)</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(6)" data-toggle="button"><i class="fa fa-4x fa-fw umbs-up umbs-o-up fa-thumbs-up"></i><br>Activity Feed</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(7)" data-toggle="button"><i class="fa fa-4x fa-fw fa-star-half-full"></i><br>Rating System</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(8)" data-toggle="button"><i class="fa fa-4x fa-fw -retro fa-file-image-o"></i><br>Photos</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(9)" data-toggle="button"><i class="fa fa-4x fa-fw fa-video-camera"></i><br>Video</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(10)" data-toggle="button"><i class="fa fa-4x fa-fw fa-headphones"></i><br>Audio/Music</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(11)" data-toggle="button"><i class="fa fa-4x fa-fw fa-photo"></i><br>Gallery</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(12)" data-toggle="button"><i class="fa fa-4x fa-fw fa-map-marker"></i><br>Maps</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(13)" data-toggle="button"><i class="fa fa-4x fa-fw fa-location-arrow"></i><br>Geolocation</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(14)" data-toggle="button"><i class="fa fa-4x fa-fw fa-compass"></i><br>Compass</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(15)" data-toggle="button"><i class="fa fa-4x fa-fw fa-bar-chart-o"></i><br>Custom Dash</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(16)" data-toggle="button"><i class="fa fa-4x fa-fw fa-credit-card"></i><br><small>Accept Payments</small></a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(17)" data-toggle="button"><i class="fa fa-4x fa-fw fa-cloud-upload"></i><br>Sync Devices</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(18)" data-toggle="button"><i class="fa fa-4x fa-fw fa-user"></i><br>User Profiles</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(19)" data-toggle="button"><i class="fa fa-4x fa-fw fa-comments-o"></i><br>Messaging</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(20)" data-toggle="button"><i class="fa fa-4x fa-fw s fa-comments-o"></i><br><small>SMS Integration</small></a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(21)" data-toggle="button"><i class="fa fa-4x fa-fw -o fa-exclamation-circle"></i><br>Notifications</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(22)" data-toggle="button"><i class="fa fa-4x fa-fw fa-shopping-cart"></i><br>Shopping Cart</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(23)" data-toggle="button"><i class="fa fa-4x fa-fw fa-tasks"></i><br>Task List</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(24)" data-toggle="button"><i class="fa fa-4x fa-fw fa-search"></i><br>Search</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(25)" data-toggle="button"><i class="fa fa-4x fa-fw fa-barcode"></i><br>Barcodes</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(26)" data-toggle="button"><i class="fa fa-4x fa-fw fa-qrcode"></i><br>QR Codes</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(27)" data-toggle="button"><i class="fa fa-4x fa-fw -o -o fa-calendar"></i><br>Calendar</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(28)" data-toggle="button"><i class="fa fa-4x fa-fw fa-twitter"></i><br>SMedia Sharing</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(29)" data-toggle="button"><i class="fa fa-4x fa-fw fa-cloud"></i><br>API Integration</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(30)" data-toggle="button"><i class="fa fa-4x fa-fw -o -o -alt fa-unlock-alt"></i><br><small>Privacy Settings</small></a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(31)" data-toggle="button"><i class="fa fa-4x fa-fw -o -o -alt fa-lock"></i><br>Encrypt Data</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(32)" data-toggle="button"><i class="fa fa-4x fa-fw -o -o -phone fa-database"></i><br><small>Reliability / Scale</small></a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(33)" data-toggle="button"><i class="fa fa-4x fa-fw -o -o fa-file-o"></i><br>1-3 Screens</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(34)" data-toggle="button"><i class="fa fa-4x fa-fw -o -o fa-file-text-o"></i><br>3-8 Screens</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(35)" data-toggle="button"><i class="fa fa-4x fa-fw -o -o fa-files-o"></i><br>9+ Screens</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(36)" data-toggle="button"><i class="fa fa-4x fa-fw fa-globe"></i><br>2nd Language</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(37)" data-toggle="button"><i class="fa fa-4x fa-fw umbs-up fa-thumbs-o-up"></i><br><small>Admin Approval</small></a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(38)" data-toggle="button"><i class="fa fa-4x fa-fw fa-file-text"></i><br>Reporting</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(39)" data-toggle="button"><i class="fa fa-4x fa-fw fa-sitemap"></i><br>Web Portal</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(40)" data-toggle="button"><i class="fa fa-4x fa-fw fa-money"></i><br><small>Payment System</small></a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(41)" data-toggle="button"><i class="fa fa-4x fa-fw fa-users"></i><br>Admin Users</a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(42)" data-toggle="button"><i class="fa fa-4x fa-fw s fa-ticket"></i><br><small>Ticketing System</small></a>
+                    <br>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="btn btn-block btn-info text-center" ng-click="addFeat(43)" data-toggle="button"><i class="fa fa-4x fa-fw s fa-bug"></i><br><small>Feedback System</small></a>
+                    <br>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <h4>Totals</h4>
+                  <div class="col-md-12 light" id="cerceve">
+                    <div class="col-md-12" ng-repeat="item in display">
+                      <div class="col-md-8 text-primary">{{item.name}}</div>
+                      <div class="col-md-3 text-primary">{{item.cost}}</div>
+                    </div>
+                  </div>
+                  <br>
+                  <hr>
+                  <br>
+                  <div class="col-md-12">
+                    <div class="col-md-4">
+                      <h3>Total</h3>
+                    </div>
+                    <div class="col-md-8">
+                      <h3 class="text-primary">{{total | currency}}</h3>
+                    </div>
+                  </div>
+                  <div class="col-md-12 text-center">
+                    <a class="btn btn-block btn-info text-center" ng-click="moreDevices()" data-toggle="button">
+                      Click Here For Both Devices
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <footer class="footer mt-auto py-3">
+
+            <div class="container">
+    
+              <span class="text-muted"> | 242 Penetanguishine Road, L4M7C2 ON CA | For Contact KiwiWeb@gmail.com</span>
+              <img src="./images/logo2.png" alt="logo_Kiwiweb" height="35px" width="35px">
+    
+            </div>
+        </footer>
+      
+    <script src="mobileAppPrice.js"></script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+
+</body>
+</html>
