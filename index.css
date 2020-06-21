@@ -139,19 +139,12 @@ h2 {
 
 }
 
-form {
-    flex: 2;
-    min-width: 200px;
-    opacity: 0;
-    visibility: hidden;
-    margin-left: 7%;
 
-}
 
 #macContainer {
     flex: 2;
     margin-top: 7%;
-    margin-left: 7%;
+    margin-left: 50%;
 
 }
 
@@ -173,12 +166,16 @@ form {
     background-image: url("images/a.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
 }
 
 #formJumbotronTitle {
-    position: absolute;
-    left: 5%;
-    margin-top: 7%;
+  margin-top: 3%;
+    margin-left: 5%;
 
 }
 
@@ -220,3 +217,9 @@ width: 80%;
 }
 
 }
+
+
+.footer {
+  margin-top: 100%;
+    color: white;
+  }
