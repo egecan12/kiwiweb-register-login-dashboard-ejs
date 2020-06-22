@@ -3,6 +3,10 @@ body {
     overflow-x: hidden;
     /* Hide vertical scrollbar */
 
+    
+    overflow-y: hidden;
+
+
 }
 
 /* background by SVGBackgrounds.com */
@@ -224,6 +228,10 @@ width: 60%;
     color: white;
   }
 
+  #myDiv{
+   
+  }
+
 
   .loader-wrapper {
     width: 100%;
@@ -231,7 +239,7 @@ width: 60%;
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #071120;
+    background-color: #250c44;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -250,4 +258,5 @@ width: 60%;
     75% { transform: rotate(360deg);}
     100% { transform: rotate(360deg);}
   }
+ 
  
