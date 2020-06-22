@@ -64,8 +64,8 @@ let transporter = nodemailer.createTransport({
 
 
 let mailOptions = {
-    from:'hasankayaverdi@gmail.com',  
-    to: 'hasankayaverdi@gmail.com',
+    from:'kiwiwebconsultancy@gmail.com',  
+    to: 'kiwiwebconsultancy@gmail.com',
     subject: req.body.option ,
     text:'Sender address : '+ req.body.email +" "+ 'Sender message : '+ req.body.details,
 
