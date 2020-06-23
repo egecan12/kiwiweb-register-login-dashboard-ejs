@@ -67,7 +67,7 @@ let mailOptions = {
     from:'kiwiwebconsultancy@gmail.com',  
     to: 'kiwiwebconsultancy@gmail.com',
     subject: req.body.option ,
-    text:'Sender address : '+ req.body.email +" "+ 'Sender message : '+ req.body.details,
+    text:'Sender address : '+ req.body.email +" Sender phone number: "+ req.body.phone +' Sender message : '+ req.body.details,
 
  
 
