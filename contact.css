@@ -64,8 +64,8 @@ body {
         padding-left: 13%;
     }
     .footer{
-        margin-top: 100%;
-
+        position: absolute;
+        bottom: 0;
     }
 
 }
