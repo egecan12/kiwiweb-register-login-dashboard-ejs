@@ -52,6 +52,7 @@ body {
     body {
         background-size: 200% 200%;
         overflow-x: hidden;
+        position: relative;
       
 
     }
