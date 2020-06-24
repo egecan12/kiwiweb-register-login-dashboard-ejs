@@ -52,6 +52,7 @@ body {
     body {
         background-size: 200% 200%;
         overflow-x: hidden;
+      
 
     }
 
@@ -60,12 +61,17 @@ body {
     }
 
     #form {
-        padding-top: 5%;
-        padding-left: 13%;
+        /* padding-top: 5%;
+        padding-left: 13%; */
+        
     }
     .footer{
         position: absolute;
         bottom: 0;
+    }
+    #formContainer{
+        justify-content: center;
+        align-items: center;
     }
 
 }
