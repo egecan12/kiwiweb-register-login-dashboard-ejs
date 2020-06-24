@@ -10,7 +10,7 @@ require('dotenv').config();
 const nodemailer = require('nodemailer');
 const log = console.log;
 
-const PORT = 8080;
+const port = process.env.PORT || 8080;
 
 
 var bodyParser = require('body-parser')
@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
 
 
 
-app.listen(PORT, () => {
+app.listen(port, () => {
 
     console.log( 'server starting on PORT ', 8080);
     

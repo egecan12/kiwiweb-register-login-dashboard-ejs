@@ -52,7 +52,6 @@ body {
     body {
         background-size: 200% 200%;
         overflow-x: hidden;
-      
 
     }
 
@@ -70,6 +69,7 @@ body {
         bottom: 0;
     }
     #formContainer{
+        display: flex;
         justify-content: center;
         align-items: center;
     }
