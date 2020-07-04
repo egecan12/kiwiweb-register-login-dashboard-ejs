@@ -20,20 +20,55 @@ var jsonParser = bodyParser.json()
 // create application/x-www-form-urlencoded parser
 app.use(bodyParser.urlencoded({ extended: true }));
  
+app.use(express.static(__dirname + '/public'));
 
 
+// app.use(express.static(path.join(__dirname, "/")))
 
-app.use(express.static(path.join(__dirname, "/")))
+app.set('view engine', 'ejs'); 
+
 
 app.get('/', (req, res) => {
     // res.sendFile(path.join(__dirname + '/index.html'));
 
-    return res.redirect('/');
+    // return res.redirect('/');
+    res.render('index'); 
+
 
     
 })
 
 
+app.get('/contact', (req, res) => {
+    // res.sendFile(path.join(__dirname + '/index.html'));
+
+    // return res.redirect('/');
+    res.render('contact'); 
+
+
+    
+})
+
+app.get('/mobileAppPrice', (req, res) => {
+    // res.sendFile(path.join(__dirname + '/index.html'));
+
+    // return res.redirect('/');
+    res.render('mobileAppPrice'); 
+
+
+    
+})
+
+
+app.get('/webdev', (req, res) => {
+    // res.sendFile(path.join(__dirname + '/index.html'));
+
+    // return res.redirect('/');
+    res.render('webdev'); 
+
+
+    
+})
 
 
 
