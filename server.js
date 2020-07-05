@@ -7,21 +7,21 @@ const expressLayouts = require('express-ejs-layouts')
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const mongoose = require('mongoose')
+const flash = require('connect-flash');
+const session = require('express-session');
+const User = require('./models/user')
+const nodemailer = require('nodemailer');
+
 
 
 require('dotenv').config();
 
-const nodemailer = require('nodemailer');
+// Passport Config
+require('./config/passport')(passport);
+
 const log = console.log;
-const User = require('./models/user')
 
 const port = process.env.PORT || 8080;
-
-
-
-
-
-
 
 
 var bodyParser = require('body-parser')
@@ -31,6 +31,35 @@ var jsonParser = bodyParser.json()
 
 
 
+// Express session
+app.use(
+    session({
+      secret: 'secret',
+      resave: true,
+      saveUninitialized: true
+    })
+  );
+
+  // Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+// Connect flash
+app.use(flash());
+
+
+// Global variables 
+app.use(function(req, res, next) {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    next();
+  });
+  
+
+
+
+
+//db connection
 mongoose
     .connect(process.env.MONGO_URL, {
         useNewUrlParser: true,
@@ -110,10 +139,23 @@ app.get('/login', (req, res) => {
     
 })
 
-app.get('/register', (req, res) => {
-    // res.sendFile(path.join(__dirname + '/index.html'));
+// Login handle
+app.post('/login', (req, res, next) => {
+  passport.authenticate('local', {
+    successRedirect: '/dashboard',
+    failureRedirect: '/login',
+    failureFlash: true
+  })(req, res, next);
+});
+// Logout handle
+app.get('/logout', (req, res) => {
+  req.logout();
+  req.flash('success_msg', 'You are logged out');
+  res.redirect('/login');
+});
 
-    // return res.redirect('/');
+app.get('/register', (req, res) => {
+
     res.render('register'); 
 
     console.log(req.body)
@@ -169,8 +211,11 @@ app.post('/register', (req, res) => {
               newUser
                 .save()
                 .then(user => {
-                 
-                  res.redirect('/users/login');
+                    req.flash(
+                        'success_msg',
+                        'You are now registered and can log in'
+                      );
+                  res.redirect('/login');
                 })
                 .catch(err => console.log(err));
             });
@@ -183,6 +228,7 @@ app.post('/register', (req, res) => {
 
 app.post('/submitForm', (req, res) => {
     // res.sendFile(path.join(__dirname + '/index.html'));
+
 
 
 
@@ -225,7 +271,8 @@ return res.redirect('/');
 })
 
 
-
+// Routes
+app.use('/', require('./routes/index.js'));
 
 
 app.listen(port, () => {
