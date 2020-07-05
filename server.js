@@ -11,6 +11,8 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const User = require('./models/user')
 const nodemailer = require('nodemailer');
+const Messages = require('./models/messages')
+
 
 
 
@@ -139,6 +141,9 @@ app.get('/login', (req, res) => {
     
 })
 
+
+
+
 // Login handle
 app.post('/login', (req, res, next) => {
   passport.authenticate('local', {
@@ -225,9 +230,17 @@ app.post('/register', (req, res) => {
     }
   });
 
+// to submit the form that on the contact page
+app.post('/submitForm', async (req, res, next) => {
+	const newMessage = new Messages({
+		email: req.body.email,
+		phone: req.body.phone,
+    option: req.body.option,
+    details: req.body.details
+	});
+	await newMessage.save();
 
-app.post('/submitForm', (req, res) => {
-    // res.sendFile(path.join(__dirname + '/index.html'));
+
 
 
 
@@ -265,8 +278,10 @@ transporter.sendMail(mailOptions, (err, data) => {
     
 });
 
+req.flash('success_msg', 'Your message has been sent succesfully');
 
-return res.redirect('/');
+return res.redirect('/contact');
+
 
 })
 
