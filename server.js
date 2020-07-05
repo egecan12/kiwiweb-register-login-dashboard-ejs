@@ -3,23 +3,53 @@
 const express = require('express');
 const path = require('path');
 const app = express();
- 
+const expressLayouts = require('express-ejs-layouts')
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
+const mongoose = require('mongoose')
+
 
 require('dotenv').config();
 
 const nodemailer = require('nodemailer');
 const log = console.log;
+const User = require('./models/user')
 
 const port = process.env.PORT || 8080;
+
+
+
+
+
+
 
 
 var bodyParser = require('body-parser')
 
 var jsonParser = bodyParser.json()
+
+
+
+
+mongoose
+    .connect(process.env.MONGO_URL, {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useUnifiedTopology: true
+    })
+    .then(() => {
+        console.log('Connected to Mongo!');
+    })
+    .catch((err) => {
+        console.error('Error connecting to Mongo', err);
+    });
  
 // create application/x-www-form-urlencoded parser
 app.use(bodyParser.urlencoded({ extended: true }));
  
+app.use(express.urlencoded({ extended: false }))
+
+
 app.use(express.static(__dirname + '/public'));
 
 
@@ -70,16 +100,85 @@ app.get('/webdev', (req, res) => {
     
 })
 
+app.get('/login', (req, res) => {
+    // res.sendFile(path.join(__dirname + '/index.html'));
+
+    // return res.redirect('/');
+    res.render('login'); 
 
 
-app.listen(port, () => {
-
-    console.log( 'server starting on PORT ', 8080);
     
-} 
+})
 
-)
+app.get('/register', (req, res) => {
+    // res.sendFile(path.join(__dirname + '/index.html'));
 
+    // return res.redirect('/');
+    res.render('register'); 
+
+    console.log(req.body)
+    
+})
+
+app.post('/register', (req, res) => {
+    const { name, email, password, password2 } = req.body;
+    let errors = [];
+  
+    if (!name || !email || !password || !password2) {
+      errors.push({ msg: 'Please enter all fields' });
+    }
+  
+    if (password != password2) {
+      errors.push({ msg: 'Passwords do not match' });
+    }
+  
+    if (password.length < 6) {
+      errors.push({ msg: 'Password must be at least 6 characters' });
+    }
+  
+    if (errors.length > 0) {
+      res.render('register', {
+        errors,
+        name,
+        email,
+        password,
+        password2
+      });
+    } else {
+      User.findOne({ email: email }).then(user => {
+        if (user) {
+          errors.push({ msg: 'Email already exists' });
+          res.render('register', {
+            errors,
+            name,
+            email,
+            password,
+            password2
+          });
+        } else {
+          const newUser = new User({
+            name,
+            email,
+            password
+          });
+  
+          bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(newUser.password, salt, (err, hash) => {
+              if (err) throw err;
+              newUser.password = hash;
+              newUser
+                .save()
+                .then(user => {
+                 
+                  res.redirect('/users/login');
+                })
+                .catch(err => console.log(err));
+            });
+          });
+        }
+      });
+    }
+  });
 
 
 app.post('/submitForm', (req, res) => {
@@ -129,6 +228,13 @@ return res.redirect('/');
 
 
 
+app.listen(port, () => {
+
+    console.log( 'server starting on PORT ', 8080);
+    
+} 
+
+)
 
 
 
