@@ -7,6 +7,8 @@ const Message = require('../models/messages')
 // Welcome Page
 router.get('/', forwardAuthenticated, (req, res) => res.render('welcome'));
 
+
+
 // Dashboard    
 router.get('/dashboard', ensureAuthenticated, async (req, res) =>{
 try {
