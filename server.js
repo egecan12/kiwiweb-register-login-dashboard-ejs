@@ -165,7 +165,8 @@ app.get('/register', (req, res) => {
 
     console.log(req.body)
     
-})
+});
+
 
 app.post('/register', (req, res) => {
     const { name, email, password, password2 } = req.body;

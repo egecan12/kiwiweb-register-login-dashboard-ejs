@@ -8,7 +8,6 @@ const Message = require('../models/messages')
 router.get('/', forwardAuthenticated, (req, res) => res.render('welcome'));
 
 
-
 // Dashboard    
 router.get('/dashboard', ensureAuthenticated, async (req, res) =>{
 try {
@@ -18,12 +17,27 @@ try {
   res.render('dashboard', {
     user: req.user,
     messages:messages,
+    id: req.params.id
+
 
   })
+  console.log(messages)
+
 } catch (error) {
   console.log(error)
 }
 
+
+router.get('/delete/:id', (req,res)=>{
+  let id = req.params.id;
+  Message.remove({_id: id}, (err, tareas)=>{
+      if(err){console.log(err);}
+      
+      console.log("deleted")
+      res.redirect('/dashboard');
+  });
 });
 
+
+ });
 module.exports = router;
