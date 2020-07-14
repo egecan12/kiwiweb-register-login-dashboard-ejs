@@ -14,10 +14,14 @@
 .form-group>.form-control {}
 
 .footer {
-    position: static;
+    position: absolute;
     width: 100%;
     color: white;
     background-color: white;
+}
+
+div.container{
+    position: relative;
 }
 
 body {
