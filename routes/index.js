@@ -12,16 +12,18 @@ router.get('/', forwardAuthenticated, (req, res) => res.render('welcome'));
 router.get('/dashboard', ensureAuthenticated, async (req, res) =>{
 try {
   
+  
   const messages = await Message.find()
 
   res.render('dashboard', {
     user: req.user,
     messages:messages,
-    id: req.params.id
+    id: req.params.id,
+    role: req.user.role
 
 
   })
-  console.log(messages)
+  console.log(req.user.role)
 
 
 } catch (error) {

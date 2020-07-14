@@ -64,6 +64,12 @@
                   placeholder="Confirm Password"
                   value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
                 />
+                <input
+                type="hidden"
+                id="role"
+                name="role"
+                value="user"
+              />
               </div>
               <button type="submit" class="btn btn-primary btn-block">
                 Register

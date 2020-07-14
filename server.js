@@ -135,7 +135,7 @@ app.get('/login', (req, res) => {
     // res.sendFile(path.join(__dirname + '/index.html'));
 
     // return res.redirect('/');
-    res.render('login'); 
+    res.render('login',{ role: req.body.role}); 
 
 
     
@@ -147,12 +147,30 @@ app.get('/login', (req, res) => {
 // Login handle
 app.post('/login', (req, res, next) => {
 
-  passport.authenticate('local', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/login',
-    failureFlash: true
-    
-  })(req, res, next);
+  const user = req.body
+
+  console.log(user.email)
+  console.log(user.role)
+
+
+  if (user.role === "admin") {
+    passport.authenticate('local', {
+      successRedirect: '/dashboard',
+      failureRedirect: '/login',
+      failureFlash: true
+      
+    })(req, res, next);
+  }
+  else{
+    passport.authenticate('local', {
+      successRedirect: '/dashboard',
+      failureRedirect: '/login',
+      failureFlash: true
+      
+    })(req, res, next);
+  }
+
+
 
 });
 // Logout handle
@@ -171,8 +189,9 @@ app.get('/register', (req, res) => {
 });
 
 
-app.post('/register', (req, res) => {
-    const { name, email, password, password2 } = req.body;
+
+app.post('/register', (req, res, next) => {
+    const { name, email, password, password2, role } = req.body;
     let errors = [];
   
     if (!name || !email || !password || !password2) {
@@ -193,7 +212,8 @@ app.post('/register', (req, res) => {
         name,
         email,
         password,
-        password2
+        password2,
+        role
       });
     } else {
       User.findOne({ email: email }).then(user => {
@@ -204,13 +224,15 @@ app.post('/register', (req, res) => {
             name,
             email,
             password,
-            password2
+            password2,
+            role
           });
         } else {
           const newUser = new User({
             name,
             email,
-            password
+            password,
+            role:req.body.role
           });
   
           bcrypt.genSalt(10, (err, salt) => {
