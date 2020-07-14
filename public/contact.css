@@ -14,8 +14,7 @@
 .form-group>.form-control {}
 
 .footer {
-    margin-top: 100%;
-
+    position: static;
     width: 100%;
     color: white;
     background-color: white;
