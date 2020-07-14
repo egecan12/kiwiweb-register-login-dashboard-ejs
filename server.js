@@ -23,7 +23,7 @@ require('./config/passport')(passport);
 
 const log = console.log;
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8000;
 
 
 var bodyParser = require('body-parser')
@@ -296,7 +296,7 @@ app.use('/', require('./routes/index.js'));
 
 app.listen(port, () => {
 
-    console.log( 'server starting on PORT ', 8080);
+    console.log( 'server starting on PORT ', 8000);
     
 } 
 
