@@ -15,10 +15,7 @@
       margin-right: 10%;
 
     }
-    #buttonCase{
-      justify-content: start;
-      flex-direction: row;
-    }
+
 
     #anatop {
       display: flex;
@@ -44,7 +41,20 @@
 </head>
 
 <body>
-
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Messages</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    </li>
+  </ul>
 
   <div id="anatop">
     <h1 class="mt-4"><img src="./images/logo2.png" alt="logologo2" height="50" width="50"> Dashboard</h1>
@@ -62,25 +72,7 @@
     </div>
 
   </div>
-<div id="buttonCase" class="d-flex">
-  <button id="buttonMessage" onclick="turnOnMessages()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-      width="35" height="32">
-      <path fill-rule="evenodd"
-        d="M1.75 2A1.75 1.75 0 000 3.75v.736a.75.75 0 000 .027v7.737C0 13.216.784 14 1.75 14h12.5A1.75 1.75 0 0016 12.25v-8.5A1.75 1.75 0 0014.25 2H1.75zM14.5 4.07v-.32a.25.25 0 00-.25-.25H1.75a.25.25 0 00-.25.25v.32L8 7.88l6.5-3.81zm-13 1.74v6.441c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V5.809L8.38 9.397a.75.75 0 01-.76 0L1.5 5.809z">
-      </path>
-    </svg></button>
 
-    <% if(role === 'admin'){ %>
-      <button id="buttonMessage" onclick="turnOnMessages()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-        width="35" height="32">
-        <path fill-rule="evenodd"
-          d="M1.75 2A1.75 1.75 0 000 3.75v.736a.75.75 0 000 .027v7.737C0 13.216.784 14 1.75 14h12.5A1.75 1.75 0 0016 12.25v-8.5A1.75 1.75 0 0014.25 2H1.75zM14.5 4.07v-.32a.25.25 0 00-.25-.25H1.75a.25.25 0 00-.25.25v.32L8 7.88l6.5-3.81zm-13 1.74v6.441c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V5.809L8.38 9.397a.75.75 0 01-.76 0L1.5 5.809z">
-        </path>
-      </svg></button>
-      <% } else{ %>
-      <p>Role: User</p>
-      <% } %>
-    </div>
   <div class="cardContainer" id="cardContainer">
     <% for (let message of messages) { %>
 
@@ -101,36 +93,8 @@
     <% } %>
   </div>
   <script>
-    var buttonIsPressed = 0;
-
-    if (buttonIsPressed == 0) {
-      document.getElementById("cardContainer").style.display = "none";
-
-    } else {
       document.getElementById("cardContainer").style.display = "grid";
 
-
-    }
-
-
-
-    function turnOnMessages() {
-      if (buttonIsPressed == 1) {
-        document.getElementById("cardContainer").style.display = "none";
-        buttonIsPressed = 0
-        document.getElementById("buttonMessage").style.backgroundColor = "#ffffff";
-
-      } else {
-        document.getElementById("cardContainer").style.display = "list-item";
-        buttonIsPressed = 1
-        document.getElementById("buttonMessage").style.backgroundColor = "#ccccff";
-
-      }
-
-
-
-
-    }
   </script>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
