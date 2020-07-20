@@ -52,7 +52,10 @@ div.col-sm {
 
 #jumbotron2>div>h1 {
     color: black;
+    font-size:x-small;
+
 }
+
 
 #jumbotron3 {
     background-color: #054c8e;
@@ -72,10 +75,20 @@ div.col-sm {
 
 h1 {
     color: white;
+    font-size:x-small;
+
 }
 
 p {
-    color: white;
+    color: black;
+}
+
+.lead{
+    color: white !important;
+}
+
+p.lead#security{
+    color: black !important;
 }
 
 #jumbotron4 {
