@@ -79,7 +79,9 @@ div.col-sm {
 
 }
 
-
+.section h3{
+font-size: x-large !important;
+}
 
 .navbar-nav {
     margin-left: 1.4%;
