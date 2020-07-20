@@ -17,9 +17,6 @@ body {
   }
   
 
-h1{
-    font-size:x-large !important;
-}
 h3{
     font-size:medium !important;
 }
@@ -90,7 +87,7 @@ div.col-sm {
 
 h1 {
     color: white;
-    font-size:x-small;
+    font-size:xx-large !important;
 
 }
 
