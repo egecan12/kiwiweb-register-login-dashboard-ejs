@@ -12,6 +12,16 @@ body {
 /* background by SVGBackgrounds.com */
 
 
+h1{
+    font-size:x-large !important;
+}
+h3{
+    font-size:medium !important;
+}
+h2.ourServices#ourServices{
+    color: black !important;
+}
+
 div.row {
 margin-right: 0px;}
 
